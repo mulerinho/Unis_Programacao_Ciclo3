@@ -10,11 +10,11 @@ class App:
         self.window.minsize(width=400, height=400)
         self.window.maxsize(400, 400)
         self.window.configure(background='light gray')
-        campo_altura = Label( font=('arial',20, 'bold'), text='Altura')
+        campo_altura = Label( font=('arial',20, 'bold'), text='Altura Ex:(1.80)')
         campo_altura.pack()
         self.screen_altura = Entry(self.window, font='arial 20 bold', bg='light blue',  width=9)
         self.screen_altura.pack()
-        campo_peso = Label(font=('arial', 20, 'bold'), text='Peso')
+        campo_peso = Label(font=('arial', 20, 'bold'), text='Peso Ex: (56.5)')
         campo_peso.pack()
         self.screen_peso = Entry(self.window, font='arial 20 bold', bg='light blue',  width=9)
         self.screen_peso.pack()
@@ -32,13 +32,14 @@ class App:
 
         self.button_imc = Button(self.frame, bg='light green', text='IMC', font='arial 20 bold', command=self.total)
         self.button_imc.grid(row=0, column=3)
+        # Botão limpar
+        self.button_limpar = Button(self.frame, bg='light green', text='Limpar', font='arial 20 bold', command=self.limp)
+        self.button_limpar.grid(row=1, column=3)
 
         self.window.mainloop()
 
 
 # Criando as funcionalidades
-
-
 
     def total(self):
         alt = self.screen_altura.get()
@@ -53,13 +54,10 @@ class App:
         final_str = str_convert[: size - 14]
         print(final_str)
         self.screen_imc.insert(0,final_str)
-        print('Fim')
-
-
-
-
-
-
-
+        
+    def limp(self):
+        self.screen_imc.delete(0, END)
+   
+    
 
 executando = App()
